@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duvidas</title>
     <link rel="stylesheet" href="tailwind/output.css">
+    <!--npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch-->
 </head>
-<body>
-    <header class=" bg-black w-full h-[70px] border-[3px] border-b-green-800 flex flex-col items-center">
-        <h1 class="text-[#00ff00] text-2xl pt-2 font-bold">DUVIDAS</h1>
-        <p class="text-green-700" >Leia abaixo</p> 
+<body class="bg-[#00001a] flex flex-wrap justify-center items-center">
+    <header class=" bg-black w-full h-[70px] border-[3px] border-b-green-800 flex flex-row justify-center  items-center ">
+        <div class="flex gap-32">
+            <!--WhatsApp-->
+            <a href="https://wa.me/qr/TRRCXRZZUQHJL1" 
+            class="pt-2 hover:scale-110 transition">
+                <img src="imagens/whatsapp.png" alt="WhatsApp"
+                class="w-7 h-7"></a>
+
+            <h1 class="text-[#00ff00] text-2xl pt-2 font-bold">DUVIDAS</h1>
+
+            <!--Instagram-->
+            <a href="https://www.instagram.com/sousa_jg/" 
+            class="pt-2 hover:scale-110 transition">
+            <img src="imagens/instagram-hightquality.png" alt="Instagram" class="w-7[30px] h-[30px] "></a>
+        </div>
+        
     </header>
     <main 
-    class="bg-[#00001a] text-white">
+    class="bg-[#00001a] text-white max-w-[600px] ">
         <div 
-        class="p-2 ">
+        class="p-2">
             <h2 
-            class="text-[19px] font-bold text-green-600">Dev Front-End</h2>
+            class="text-[19px] font-bold text-green-600 "
+            >Dev Front-End</h2> <img src="imagens/" alt="">
             <p>O desenvolvedor front-end é o profissional responsável por criar a interface de sites e aplicativos, ou seja, tudo o que o usuário vê, clica e interage diretamente no navegador. Utilizando tecnologias como HTML, CSS e JavaScript, ele transforma layouts em páginas funcionais, garantindo que o design seja responsivo, ágil e acessível em diferentes dispositivos. </p>
         </div>
 
