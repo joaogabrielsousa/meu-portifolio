@@ -306,6 +306,9 @@
   .gap-28 {
     gap: calc(var(--spacing) * 28);
   }
+  .gap-30 {
+    gap: calc(var(--spacing) * 30);
+  }
   .gap-32 {
     gap: calc(var(--spacing) * 32);
   }
