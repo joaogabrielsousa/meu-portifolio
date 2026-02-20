@@ -11,6 +11,36 @@
     }
 }
 
+@keyframes words-red-600{
+    0%{
+        color: white;
+    }
+    100%{
+        color: var(--color-red-600);
+    }
+}
+
+@keyframes words-red-500{
+    0%{
+        color: white;
+    }
+    100%{
+        color: var(--color-red-500);
+    }
+}
+
+@keyframes words-red-400{
+    0%{
+        color: white;
+    }
+    100%{
+        color: var(--color-red-400);
+    }
+}
+
+h1, h2, h3{
+    font-family:"Bebas Neue", arial, sans-serif;
+}
 .display-none{
     display: none;
 }
