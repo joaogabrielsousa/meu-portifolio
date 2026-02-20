@@ -25,6 +25,7 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-2xs: 18rem;
+    --container-sm: 24rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
@@ -280,8 +281,17 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
+  .w-\[664\] {
+    width: 664;
+  }
+  .w-\[664px\] {
+    width: 664px;
+  }
   .w-full {
     width: 100%;
+  }
+  .w-sm {
+    width: var(--container-sm);
   }
   .max-w-2xs {
     max-width: var(--container-2xs);
@@ -291,6 +301,12 @@
   }
   .max-w-\[600px\] {
     max-width: 600px;
+  }
+  .max-w-\[664px\] {
+    max-width: 664px;
+  }
+  .max-w-full {
+    max-width: 100%;
   }
   .animate-\[fade-in_0\.8s_ease-out_forwards\] {
     animation: fade-in 0.8s ease-out forwards;
@@ -306,6 +322,9 @@
   }
   .flex-wrap {
     flex-wrap: wrap;
+  }
+  .place-content-center {
+    place-content: center;
   }
   .place-items-center {
     place-items: center;
@@ -338,8 +357,17 @@
       margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
+  .overflow-auto {
+    overflow: auto;
+  }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-scroll {
+    overflow: scroll;
+  }
+  .overflow-x-hidden {
+    overflow-x: hidden;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
