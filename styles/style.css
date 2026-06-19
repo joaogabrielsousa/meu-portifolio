@@ -1,46 +1,219 @@
-@import "tailwindcss";
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-@keyframes fade-in{
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-    to {
+:root {
+    --red: #E63950;
+    --blue: #2451E0;
+    --dark: #11131A;
+    --muted: #5C6270;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* ── STAGE ── */
+#stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+#stage.fade-out {
+    opacity: 0;
+}
+
+/* ── ICON SVG ── */
+#icon-wrap {
+    opacity: 0;
+    transform: scale(0.72);
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+#icon-wrap.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Chevron draw-on */
+#chevron-path {
+    stroke-dasharray: 260;
+    stroke-dashoffset: 260;
+    transition: stroke-dashoffset 0.9s cubic-bezier(.4, 0, .2, 1);
+}
+
+#chevron-path.drawn {
+    stroke-dashoffset: 0;
+}
+
+/* Cursor blink */
+#cursor-rect {
+    opacity: 0;
+}
+
+#cursor-rect.blink {
+    animation: blink 0.7s step-start 3;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
         opacity: 1;
-        transform: translateY(0px)
+    }
+
+    50% {
+        opacity: 0;
     }
 }
 
-@keyframes words-red-600{
-    0%{
-        color: white;
+#cursor-rect.solid {
+    opacity: 1;
+}
+
+/* ── LOCKUP SVG ── */
+#lockup-wrap {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.22, 1, .36, 1);
+}
+
+#lockup-wrap.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Wordmark text reveal */
+#wm-name,
+#wm-sub {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#wm-name.visible {
+    opacity: 1;
+}
+
+#wm-sub.visible {
+    opacity: 1;
+}
+
+/* Accent bars */
+#bar1,
+#bar2 {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+#bar1.visible,
+#bar2.visible {
+    transform: scaleX(1);
+}
+
+/* ── REDIRECT HINT ── */
+#hint {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#hint.visible {
+    opacity: 1;
+}
+
+#hint-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--blue);
+    border-radius: 2px;
+    animation: blink-cursor 0.9s step-start infinite;
+}
+
+@keyframes blink-cursor {
+
+    0%,
+    100% {
+        opacity: 1;
     }
-    100%{
-        color: var(--color-red-600);
+
+    50% {
+        opacity: 0;
     }
 }
 
-@keyframes words-red-500{
-    0%{
-        color: white;
-    }
-    100%{
-        color: var(--color-red-500);
-    }
+/* ── PROGRESS BAR ── */
+#progress-track {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-@keyframes words-red-400{
-    0%{
-        color: white;
-    }
-    100%{
-        color: var(--color-red-400);
-    }
+#progress-track.visible {
+    opacity: 1;
 }
 
-h1, h2, h3{
-    font-family:"Bebas Neue", arial, sans-serif;
+#progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--red), var(--blue));
+    border-radius: 2px;
+    transition: width linear;
 }
-.display-none{
-    display: none;
+
+/* ── SCANLINES (ambient) ── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.07) 3px,
+            rgba(0, 0, 0, 0.07) 4px);
+    pointer-events: none;
+    z-index: 10;
+}
+
+@media (max-width: 680px) {
+    #lockup-wrap {
+        transform: scale(0.55) translateY(14px);
+        transform-origin: center top;
+    }
+
+    #lockup-wrap.visible {
+        transform: scale(0.55) translateY(0);
+    }
+
+    #icon-wrap svg {
+        width: 160px;
+        height: 160px;
+    }
 }
